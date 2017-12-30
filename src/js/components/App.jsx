@@ -4,6 +4,7 @@ import store from '../store'
 import ErrorBoundary from './ErrorBoundary'
 import AuthListener from './AuthListener'
 import Header from './Header'
+import AddItem from './AddItem'
 import ItemsContainer from '../containers/ItemsContainer'
 
 const App = () => (
@@ -11,7 +12,9 @@ const App = () => (
     <div>
       <ErrorBoundary message="Something went terribly wrong with the application. Sorry! ¯\_(ツ)_/¯">
         <AuthListener />
+
         <Header />
+        <AddItem />
         <ItemsContainer />
       </ErrorBoundary>
     </div>
