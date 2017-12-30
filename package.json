@@ -1,9 +1,9 @@
 {
-  "name": "prolific-consumer",
+  "name": "vice-consumption",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
-    "url": "git@github.com:kyleshevlin/prolific-consumer.git",
+    "url": "git@github.com:kyleshevlin/vice-consumption.git",
     "type": "git"
   },
   "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com>",
