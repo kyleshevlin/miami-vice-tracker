@@ -41,3 +41,10 @@ export function addItem(item) {
     item
   }
 }
+
+export function updateCurrentUser(user) {
+  return {
+    type: types.UPDATE_CURRENT_USER,
+    user
+  }
+}

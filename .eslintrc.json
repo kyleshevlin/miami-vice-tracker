@@ -22,5 +22,8 @@
     "browser": true,
     "node": true,
     "jest": true
+  },
+  "rules": {
+    "no-shadow": 0
   }
 }

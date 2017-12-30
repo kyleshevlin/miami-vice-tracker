@@ -12,6 +12,12 @@ const reducer = (state = initialState, action) => {
         items: [...state.items, action.item]
       }
 
+    case types.UPDATE_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.user
+      }
+
     default:
       return state
   }
