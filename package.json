@@ -1,9 +1,9 @@
 {
-  "name": "vice-consumption",
+  "name": "miami-vice-tracker",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
-    "url": "git@github.com:kyleshevlin/vice-consumption.git",
+    "url": "git@github.com:kyleshevlin/miami-vice-tracker.git",
     "type": "git"
   },
   "author": "Kyle Shevlin <kyle.a.shevlin@gmail.com>",
@@ -41,6 +41,8 @@
     "babel-preset-react": "^6.24.1",
     "classnames": "^2.2.5",
     "css-loader": "^0.28.4",
+    "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.3",
     "enzyme-to-json": "^3.2.1",
@@ -69,6 +71,7 @@
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
+    "firebase": "^4.8.1",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

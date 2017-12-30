@@ -1,4 +1,4 @@
-const STATE_KEY = 'prolific-consumer-state'
+const STATE_KEY = 'miami-vice-tracker-state'
 
 export const loadState = () => {
   try {

@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -55,6 +56,10 @@ module.exports = env => {
       ]
     },
     plugins: [
+      new Dotenv({
+        path: './.env',
+        safe: false
+      }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(
           process.env.NODE_ENV || 'development'
@@ -63,7 +68,7 @@ module.exports = env => {
       new ExtractTextPlugin('style.css'),
       new HtmlWebpackPlugin({
         template: './templates/index.ejs',
-        title: 'Vice Consumption'
+        title: 'Miami Vice Tracker'
       })
     ]
   }

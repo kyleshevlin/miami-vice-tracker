@@ -1,4 +1,4 @@
-# Vice Consumption
+# Miami Vice Tracker
 
 ## Notes
 
