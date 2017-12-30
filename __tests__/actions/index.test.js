@@ -13,4 +13,12 @@ describe('Actions', () => {
 
     expect(actions.addItem(item)).toEqual(expected)
   })
+
+  it('editItem returns a POJO with the right type and update', () => {
+    const id = '123abc'
+    const update = { count: 4 }
+    const expected = { type: types.EDIT_ITEM, id, update }
+
+    expect(actions.editItem(id, update)).toEqual(expected)
+  })
 })

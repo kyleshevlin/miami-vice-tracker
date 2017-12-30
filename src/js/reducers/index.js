@@ -12,6 +12,21 @@ const reducer = (state = initialState, action) => {
         items: [...state.items, action.item]
       }
 
+    case types.EDIT_ITEM: {
+      const index = state.items.findIndex(
+        item => item.id === action.id
+      )
+
+      return {
+        ...state,
+        items: [
+          ...state.items.slice(0, index),
+          { ...state.items[index], ...action.update },
+          ...state.items.slice(index + 1)
+        ]
+      }
+    }
+
     case types.UPDATE_CURRENT_USER:
       return {
         ...state,

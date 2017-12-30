@@ -42,6 +42,14 @@ export function addItem(item) {
   }
 }
 
+export function editItem(id, update) {
+  return {
+    type: types.EDIT_ITEM,
+    id,
+    update
+  }
+}
+
 export function updateCurrentUser(user) {
   return {
     type: types.UPDATE_CURRENT_USER,
