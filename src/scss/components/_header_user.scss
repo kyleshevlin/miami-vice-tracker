@@ -1,0 +1,24 @@
+//////////////////////////////
+// Header User
+//////////////////////////////
+
+.header_user {
+
+  &-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+
+    &-wrap {
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+    }
+  }
+}

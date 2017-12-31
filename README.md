@@ -3,10 +3,10 @@
 ## Notes
 
 - [x] Setup localStorage for Redux
-- [ ] Replace with Firebase
+- [x] Replace with Firebase
 - [x] List of Items
 - [x] Item Component
-- [ ] Add Item Button / Action
-- [ ] Edit Item
-- [ ] Delete Item
+- [x] Add Item Button / Action
+- [ ] Edit Item & Store to Database
+- [ ] Delete Item & Store to Database
 - [ ] Visualizations

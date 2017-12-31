@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import shortid from 'shortid'
 import { addItem } from '../actions'
+import { database } from '../firebase'
 
 const initialState = {
   name: '',
@@ -16,18 +16,31 @@ class AddItem extends Component {
   handleSubmit = e => {
     e.preventDefault()
 
+    const { currentUser: { uid } } = this.props
     const { name, size, count } = this.state
     const integer = parseInt(count, 10)
 
     if (name.length && size.length && integer >= 0) {
+      // Create a new items ref, get its ID
+      const { key } = database.ref('items').push()
+
       const item = {
-        id: shortid.generate(),
+        id: key,
         name,
         size,
-        count: integer
+        count: integer,
+        userId: uid
       }
 
       this.props.addItem(item)
+
+      const update = {
+        [`items/${key}`]: item,
+        [`users/${uid}/items/${key}`]: item.id
+      }
+
+      database.ref().update(update)
+
       this.setState(initialState)
     }
   }
@@ -82,11 +95,18 @@ class AddItem extends Component {
 }
 
 AddItem.propTypes = {
-  addItem: PropTypes.func.isRequired
+  addItem: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({
+    uid: PropTypes.string
+  }).isRequired
 }
+
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
+})
 
 const mapDispatchToProps = {
   addItem
 }
 
-export default connect(null, mapDispatchToProps)(AddItem)
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem)
