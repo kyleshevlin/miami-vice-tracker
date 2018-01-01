@@ -1,0 +1,18 @@
+//////////////////////////////
+// Form Item
+//////////////////////////////
+
+.form_item {
+  margin-bottom: bs();
+
+  &-label {
+    display: block;
+    margin-bottom: bs(.25);
+  }
+
+  &-input {
+    display: block;
+    font-size: 16px;
+    padding: bs(.25);
+  }
+}

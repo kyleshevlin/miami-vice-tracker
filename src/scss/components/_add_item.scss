@@ -3,12 +3,9 @@
 //////////////////////////////
 
 .add_item {
-  label {
-    display: block;
-    margin-bottom: bs(.5);
-  }
+  margin-bottom: bs(2);
 
-  input {
-    margin-left: bs(.5);
+  @include bp(alpha) {
+    width: 50%;
   }
 }

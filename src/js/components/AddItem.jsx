@@ -53,29 +53,36 @@ class AddItem extends Component {
     return (
       <div className="add_item">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="itemName">
-            Name
+          <div className="form_item">
+            <label className="form_item-label" htmlFor="itemName">
+              Name
+            </label>
             <input
               id="itemName"
+              className="form_item-input"
               type="text"
               name="name"
               value={name}
               onChange={this.handleChange}
             />
-          </label>
+          </div>
 
-          <label htmlFor="itemSize">
-            Size
+          <div className="form_item">
+            <label className="form_item-label" htmlFor="itemSize">
+              Size
+            </label>
             <input
               id="itemSize"
+              className="form_item-input"
               type="text"
               name="size"
               value={size}
               onChange={this.handleChange}
             />
-          </label>
+          </div>
 
           <button
+            className="btn"
             type="submit"
             disabled={!(name.length && size.length)}
           >

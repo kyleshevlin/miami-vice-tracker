@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { database } from '../firebase'
 import { editItem, deleteItem } from '../actions'
 import { confirmWithUser } from '../utils'
+import Button from './Button'
 
 const confirmDelete = confirmWithUser(
   'Are you sure you wish to delete this item?'
@@ -104,27 +105,33 @@ class Item extends Component {
     return (
       <div className="item">
         {isEditing ? (
-          <form onSubmit={this.handleSave}>
-            <label htmlFor="localName">
-              Name
+          <Fragment>
+            <div className="form_item">
+              <label className="form_item-label" htmlFor="localName">
+                Name
+              </label>
               <input
+                className="form_item-input"
                 type="text"
                 value={localName}
                 name="localName"
                 onChange={this.handleChange}
               />
-            </label>
+            </div>
 
-            <label htmlFor="localSize">
-              Size
+            <div className="form_item">
+              <label className="form_item-label" htmlFor="localSize">
+                Size
+              </label>
               <input
+                className="form_item-input"
                 type="text"
                 value={localSize}
                 name="localSize"
                 onChange={this.handleChange}
               />
-            </label>
-          </form>
+            </div>
+          </Fragment>
         ) : (
           <Fragment>
             <div className="item-name">{name}</div>
@@ -132,20 +139,49 @@ class Item extends Component {
           </Fragment>
         )}
         <div className="item-counter">
-          {count}
-          <button onClick={this.handleIncrement}>+</button>
-          <button onClick={this.handleDecrement}>-</button>
+          <span className="item-counter-count">{count}</span>
+          <Button
+            className="btn"
+            onClick={this.handleIncrement}
+            small
+          >
+            +
+          </Button>
+          <Button
+            className="btn"
+            onClick={this.handleDecrement}
+            small
+            disabled={count <= 0}
+          >
+            -
+          </Button>
         </div>
         <div className="item-actions">
           {isEditing ? (
             <Fragment>
-              <button onClick={this.handleCancel}>Cancel</button>
-              <button onClick={this.handleSave}>Save</button>
+              <Button
+                className="btn"
+                onClick={this.handleCancel}
+                warning
+              >
+                Cancel
+              </Button>
+              <Button className="btn" onClick={this.handleSave}>
+                Save
+              </Button>
             </Fragment>
           ) : (
             <Fragment>
-              <button onClick={this.handleEdit}>Edit</button>
-              <button onClick={this.handleDelete}>Delete</button>
+              <Button className="btn" onClick={this.handleEdit}>
+                Edit
+              </Button>
+              <Button
+                className="btn"
+                onClick={this.handleDelete}
+                warning
+              >
+                Delete
+              </Button>
             </Fragment>
           )}
         </div>

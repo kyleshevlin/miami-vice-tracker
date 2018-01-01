@@ -3,9 +3,33 @@
 //////////////////////////////
 
 .item {
-  display: flex;
-  justify-content: space-between;
   padding: bs() 0;
-  border-bottom: 1px solid $c-black;
+  border-bottom: 1px solid $c-light-gray;
   margin-bottom: bs();
+
+  @include bp(alpha) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+  }
+
+  &-name {
+    font-weight: bold;
+  }
+
+  &-name,
+  &-size {
+    margin-bottom: bs(.5);
+
+    @include bp(alpha) {
+      margin-bottom: 0;
+    }
+  }
+
+  &-counter {
+
+    &-count {
+      margin-right: 10px;
+    }
+  }
 }

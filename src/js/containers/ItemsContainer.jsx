@@ -29,11 +29,9 @@ class ItemsContainer extends Component {
 
   render() {
     return (
-      <div>
-        <ErrorBoundary message="There was trouble getting the items. Sorry. ¯\_(ツ)_/¯">
-          <ItemsList items={this.props.items} />
-        </ErrorBoundary>
-      </div>
+      <ErrorBoundary message="There was trouble getting the items. Sorry. ¯\_(ツ)_/¯">
+        <ItemsList items={this.props.items} />
+      </ErrorBoundary>
     )
   }
 }

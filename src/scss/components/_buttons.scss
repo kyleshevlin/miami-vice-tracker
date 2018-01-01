@@ -1,0 +1,37 @@
+//////////////////////////////
+// Buttons
+//////////////////////////////
+
+.btn {
+  display: inline-block;
+  background-color: $c-max-teal;
+  color: $c-white;
+  font-size: 16px;
+  padding: bs(.5) bs();
+  border: none;
+  border-radius: 4px;
+  margin: 2px;
+  cursor: pointer;
+  transition: background-color .3s ease;
+
+  &.is-small {
+    font-size: 12px;
+    padding: bs(.25) bs(.5);
+  }
+
+  &.is-warning {
+    background-color: $c-radical-red;
+
+    &:hover {
+      background-color: darken($c-radical-red, 8%);
+    }
+  }
+
+  &:hover {
+    background-color: darken($c-max-teal, 8%);
+  }
+
+  &:disabled {
+    background-color: $c-light-gray;
+  }
+}
