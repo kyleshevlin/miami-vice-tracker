@@ -48,6 +48,8 @@ class AddItem extends Component {
   }
 
   render() {
+    const { name, size } = this.state
+
     return (
       <div className="add_item">
         <form onSubmit={this.handleSubmit}>
@@ -57,7 +59,7 @@ class AddItem extends Component {
               id="itemName"
               type="text"
               name="name"
-              value={this.state.name}
+              value={name}
               onChange={this.handleChange}
             />
           </label>
@@ -68,12 +70,17 @@ class AddItem extends Component {
               id="itemSize"
               type="text"
               name="size"
-              value={this.state.size}
+              value={size}
               onChange={this.handleChange}
             />
           </label>
 
-          <button type="submit">Add Item</button>
+          <button
+            type="submit"
+            disabled={!(name.length && size.length)}
+          >
+            Add Item
+          </button>
         </form>
       </div>
     )
