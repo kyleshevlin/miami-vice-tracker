@@ -1,4 +1,4 @@
-import { objectToArray } from '../../src/js/utils'
+import { objectToArray, strToFloat } from '../../src/js/utils'
 
 describe('Utils', () => {
   describe('objectToArray', () => {
@@ -18,6 +18,16 @@ describe('Utils', () => {
       const expected = ['bar', 'quux']
 
       expect(objectToArray(obj)).toEqual(expected)
+    })
+  })
+
+  describe('strToFloat', () => {
+    it('returns null when str has no float to parse', () => {
+      expect(strToFloat('abcd')).toEqual(null)
+    })
+
+    it('returns a float when given a string that is a float', () => {
+      expect(strToFloat('0.00')).toEqual(0.00)
     })
   })
 })

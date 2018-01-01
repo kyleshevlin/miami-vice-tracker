@@ -14,3 +14,13 @@ export const objectToArray = object => {
     return acc
   }, [])
 }
+
+export const strToFloat = str => {
+  const float = parseFloat(Number(str).toFixed(2))
+
+  if (isNaN(float)) {
+    return null
+  }
+
+  return float
+}

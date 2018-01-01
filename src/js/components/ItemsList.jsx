@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import Item from './Item'
 
 const ItemsList = ({ items }) => (
   <div className="items_list-wrap">
     {items.length ? (
-      <ol className="items_list">
-        {items.map(item => <Item key={item.id} item={item} />)}
-      </ol>
+      <Fragment>
+        <div className="items_list-header">
+          <span>Name</span>
+          <span>Size</span>
+          <span>Cost</span>
+          <span>Spent</span>
+          <span>Count</span>
+          <span>Actions</span>
+        </div>
+        <ol className="items_list">
+          {items.map(item => <Item key={item.id} item={item} />)}
+        </ol>
+      </Fragment>
     ) : (
       <p>{`There are no items. Why don't you add one?`}</p>
     )}

@@ -9,8 +9,16 @@
 
   @include bp(alpha) {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     align-items: center;
+  }
+
+  &-heading {
+    font-weight: bold;
+
+    @include bp(alpha) {
+      display: none;
+    }
   }
 
   &-name {
@@ -18,7 +26,10 @@
   }
 
   &-name,
-  &-size {
+  &-size,
+  &-cost,
+  &-spent,
+  &-counter {
     margin-bottom: bs(.5);
 
     @include bp(alpha) {

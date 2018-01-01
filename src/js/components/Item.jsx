@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { database } from '../firebase'
 import { editItem, deleteItem } from '../actions'
-import { confirmWithUser } from '../utils'
+import { confirmWithUser, strToFloat } from '../utils'
 import Button from './Button'
 
 const confirmDelete = confirmWithUser(
@@ -16,6 +16,7 @@ class Item extends Component {
 
     this.state = {
       isEditng: false,
+      localCost: strToFloat(props.item.cost),
       localName: props.item.name,
       localSize: props.item.size
     }
@@ -78,6 +79,7 @@ class Item extends Component {
   handleCancel = () => {
     this.setState({
       isEditing: false,
+      localCost: strToFloat(this.props.item.cost),
       localName: this.props.item.name,
       localSize: this.props.item.size
     })
@@ -87,8 +89,9 @@ class Item extends Component {
     e.preventDefault()
 
     const { item: { id }, editItem } = this.props
-    const { localName, localSize } = this.state
+    const { localCost, localName, localSize } = this.state
     const update = {
+      cost: strToFloat(localCost),
       name: localName,
       size: localSize
     }
@@ -99,11 +102,11 @@ class Item extends Component {
   }
 
   render() {
-    const { name, size, count } = this.props.item
-    const { isEditing, localName, localSize } = this.state
+    const { cost, count, name, size } = this.props.item
+    const { isEditing, localCost, localName, localSize } = this.state
 
     return (
-      <div className="item">
+      <div className={`item ${isEditing && 'is-editing'}`}>
         {isEditing ? (
           <Fragment>
             <div className="form_item">
@@ -131,14 +134,43 @@ class Item extends Component {
                 onChange={this.handleChange}
               />
             </div>
+
+            <div className="form_item">
+              <label className="form_item-label" htmlFor="localCost">
+                Cost
+              </label>
+              <input
+                className="form_item-input"
+                type="number"
+                step="0.01"
+                min={0}
+                value={localCost}
+                name="localCost"
+                onChange={this.handleChange}
+              />
+            </div>
           </Fragment>
         ) : (
           <Fragment>
             <div className="item-name">{name}</div>
-            <div className="item-size">{size}</div>
+            <div className="item-size">
+              <span className="item-heading">Size: </span>
+              {size}
+            </div>
+            {/* TODO: make this currency more internationally friendly */}
+            <div className="item-cost">
+              <span className="item-heading">Cost: </span>
+              ${cost}
+            </div>
           </Fragment>
         )}
+
+        <div className="item-spent">
+          <span className="item-heading">Total Spent: </span>
+          ${Math.round(cost * count * 100) / 100}
+        </div>
         <div className="item-counter">
+          <span className="item-heading">Count: </span>
           <span className="item-counter-count">{count}</span>
           <Button
             className="btn"
@@ -156,6 +188,7 @@ class Item extends Component {
             -
           </Button>
         </div>
+
         <div className="item-actions">
           {isEditing ? (
             <Fragment>
@@ -192,10 +225,11 @@ class Item extends Component {
 
 Item.propTypes = {
   item: PropTypes.shape({
+    cost: PropTypes.number,
+    count: PropTypes.number,
     id: PropTypes.string,
     name: PropTypes.string,
     size: PropTypes.string,
-    count: PropTypes.number,
     userId: PropTypes.string
   }).isRequired,
   deleteItem: PropTypes.func.isRequired,

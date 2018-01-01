@@ -3,8 +3,11 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { addItem } from '../actions'
 import { database } from '../firebase'
+import { strToFloat } from '../utils'
 
 const initialState = {
+  // prettier-ignore
+  cost: '0.00',
   name: '',
   size: ''
 }
@@ -16,17 +19,18 @@ class AddItem extends Component {
     e.preventDefault()
 
     const { currentUser: { uid } } = this.props
-    const { name, size } = this.state
+    const { cost, name, size } = this.state
 
-    if (name.length && size.length) {
+    if (cost.length && name.length && size.length) {
       // Create a new items ref, get its ID
       const { key } = database.ref('items').push()
 
       const item = {
+        cost: strToFloat(cost),
+        count: 0,
         id: key,
         name,
         size,
-        count: 0,
         userId: uid
       }
 
@@ -48,7 +52,7 @@ class AddItem extends Component {
   }
 
   render() {
-    const { name, size } = this.state
+    const { cost, name, size } = this.state
 
     return (
       <div className="add_item">
@@ -81,10 +85,26 @@ class AddItem extends Component {
             />
           </div>
 
+          <div className="form_item">
+            <label className="form_item-label" htmlFor="itemCost">
+              Cost
+            </label>
+            <input
+              id="itemCost"
+              className="form_item-input"
+              type="number"
+              step="0.01"
+              min={0}
+              name="cost"
+              value={cost}
+              onChange={this.handleChange}
+            />
+          </div>
+
           <button
             className="btn"
             type="submit"
-            disabled={!(name.length && size.length)}
+            disabled={!(cost.length && name.length && size.length)}
           >
             Add Item
           </button>
