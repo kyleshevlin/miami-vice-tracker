@@ -1,0 +1,16 @@
+//////////////////////////////
+// Header
+//////////////////////////////
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $c-dodger-blue;
+  color: $c-white;
+  padding: bs(.5);
+
+  &-heading {
+    font-size: 20px;
+  }
+}

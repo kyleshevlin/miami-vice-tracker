@@ -6,7 +6,7 @@ import ItemsContainer from '../containers/ItemsContainer'
 
 const Main = ({ isAuthorized }) =>
   isAuthorized ? (
-    <main>
+    <main className="main">
       <AddItem />
       <ItemsContainer />
     </main>

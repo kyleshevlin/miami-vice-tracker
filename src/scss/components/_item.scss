@@ -1,0 +1,11 @@
+//////////////////////////////
+// Item
+//////////////////////////////
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: bs() 0;
+  border-bottom: 1px solid $c-black;
+  margin-bottom: bs();
+}

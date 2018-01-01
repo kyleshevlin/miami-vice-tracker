@@ -6,10 +6,13 @@ import SignIn from './SignIn'
 import SignOut from './SignOut'
 
 const Header = ({ isAuthorized }) => (
-  <header>
-    <h1>Miami Vice Tracker</h1>
-    <HeaderUser />
-    {isAuthorized ? <SignOut /> : <SignIn />}
+  <header className="header">
+    <h1 className="header-heading">Miami Vice Tracker</h1>
+
+    <div className="header-secondary">
+      <HeaderUser />
+      {isAuthorized ? <SignOut /> : <SignIn />}
+    </div>
   </header>
 )
 

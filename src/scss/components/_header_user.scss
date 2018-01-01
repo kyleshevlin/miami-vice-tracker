@@ -3,11 +3,18 @@
 //////////////////////////////
 
 .header_user {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
 
   &-name {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 5px;
+    display: none;
+
+    @include bp(alpha) {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
   }
 
   &-img {

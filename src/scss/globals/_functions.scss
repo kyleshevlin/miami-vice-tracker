@@ -1,0 +1,16 @@
+//////////////////////////////
+// Functions
+//////////////////////////////
+
+@function bs($factor: 1) {
+  @return $s-base-spacing * $factor;
+}
+
+// Z-indexes
+@function zi($index) {
+  @if map-has-key($z-indexes, $index) {
+    @return map-get($z-indexes, $index);
+  } @else {
+    @warn "The index '#{$index}' does not exist in the $z-indexes map.";
+  }
+}

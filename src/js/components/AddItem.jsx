@@ -6,8 +6,7 @@ import { database } from '../firebase'
 
 const initialState = {
   name: '',
-  size: '',
-  count: 0
+  size: ''
 }
 
 class AddItem extends Component {
@@ -17,10 +16,9 @@ class AddItem extends Component {
     e.preventDefault()
 
     const { currentUser: { uid } } = this.props
-    const { name, size, count } = this.state
-    const integer = parseInt(count, 10)
+    const { name, size } = this.state
 
-    if (name.length && size.length && integer >= 0) {
+    if (name.length && size.length) {
       // Create a new items ref, get its ID
       const { key } = database.ref('items').push()
 
@@ -28,7 +26,7 @@ class AddItem extends Component {
         id: key,
         name,
         size,
-        count: integer,
+        count: 0,
         userId: uid
       }
 
@@ -71,18 +69,6 @@ class AddItem extends Component {
               type="text"
               name="size"
               value={this.state.size}
-              onChange={this.handleChange}
-            />
-          </label>
-
-          <label htmlFor="itemCount">
-            Count
-            <input
-              id="itemCount"
-              type="number"
-              name="count"
-              min={0}
-              value={this.state.count}
               onChange={this.handleChange}
             />
           </label>

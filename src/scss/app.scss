@@ -3,8 +3,19 @@
 ////////////////////////////////////////
 
 // Globals
+@import
+  'globals/variables',
+  'globals/functions',
+  'globals/mixins',
+  'globals/reset',
+  'globals/tags'
+;
 
 // Components
 @import
-  'components/header_user'
+  'components/add_item',
+  'components/header',
+  'components/header_user',
+  'components/item',
+  'components/main'
 ;

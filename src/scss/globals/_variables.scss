@@ -1,0 +1,26 @@
+//////////////////////////////
+// Variables
+//////////////////////////////
+
+// Breakpoints
+$breakpoints: (
+  'alpha': (min-width: 481px),
+  'bravo': (min-width: 769px),
+  'charlie': (min-width: 1025px)
+);
+
+// Colors
+$c-black: hsla(207%, 95%, 8%, 1);
+$c-white: hsla(210%, 13%, 97%, 1);
+
+$c-radical-red: hsla(345%, 100%, 60%, 1);
+$c-max-teal: hsla(174%, 62%, 47%, 1);
+$c-dodger-blue: hsla(202%, 90%, 54%, 1);
+
+// Sizes
+$s-base-spacing: 15px;
+
+// Z-indexes
+$z-indexes: (
+  'default': 'auto'
+);
