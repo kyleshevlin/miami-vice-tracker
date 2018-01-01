@@ -4,8 +4,7 @@ import store from '../store'
 import ErrorBoundary from './ErrorBoundary'
 import AuthListener from './AuthListener'
 import Header from './Header'
-import AddItem from './AddItem'
-import ItemsContainer from '../containers/ItemsContainer'
+import Main from './Main'
 
 const App = () => (
   <Provider store={store}>
@@ -14,8 +13,7 @@ const App = () => (
         <AuthListener />
 
         <Header />
-        <AddItem />
-        <ItemsContainer />
+        <Main />
       </ErrorBoundary>
     </div>
   </Provider>

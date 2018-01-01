@@ -46,4 +46,21 @@ describe('Reducer', () => {
 
     expect(reducer(state, action)).toEqual(expected)
   })
+
+  it('DELETE_ITEM deletes the correct item from the store', () => {
+    const state = {
+      items: [
+        { id: '123abc', name: 'foo' },
+        { id: '456def', name: 'bar' },
+        { id: '789ghi', name: 'baz' }
+      ]
+    }
+    const action = actions.deleteItem('456def')
+    const expected = {
+      ...state,
+      items: [state.items[0], state.items[2]]
+    }
+
+    expect(reducer(state, action)).toEqual(expected)
+  })
 })

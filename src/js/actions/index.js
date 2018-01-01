@@ -35,6 +35,13 @@ export function fetchItems() {
   }
 }
 
+export function updateItems(items) {
+  return {
+    type: types.UPDATE_ITEMS,
+    items
+  }
+}
+
 export function addItem(item) {
   return {
     type: types.ADD_ITEM,
@@ -47,6 +54,13 @@ export function editItem(id, update) {
     type: types.EDIT_ITEM,
     id,
     update
+  }
+}
+
+export function deleteItem(id) {
+  return {
+    type: types.DELETE_ITEM,
+    id
   }
 }
 

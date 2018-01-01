@@ -21,4 +21,11 @@ describe('Actions', () => {
 
     expect(actions.editItem(id, update)).toEqual(expected)
   })
+
+  it('deleteItem returns a POJO with the correct type and id', () => {
+    const id = '123abc'
+    const expected = { type: types.DELETE_ITEM, id }
+
+    expect(actions.deleteItem(id)).toEqual(expected)
+  })
 })
