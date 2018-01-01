@@ -20,6 +20,28 @@ class Item extends Component {
     }
   }
 
+  componentDidMount() {
+    this.bindKeyPress()
+  }
+
+  componentWillUnmount() {
+    this.unbindKeyPress()
+  }
+
+  bindKeyPress() {
+    document.addEventListener('keypress', this.handleKeyPress, false)
+  }
+
+  unbindKeyPress() {
+    document.removeEventListener('keypress', this.handleKeyPress)
+  }
+
+  handleKeyPress = e => {
+    if (this.state.isEditing && e.keyCode === 13) {
+      this.handleSave(e)
+    }
+  }
+
   handleIncrement = () => {
     const { item: { id, count }, editItem } = this.props
 

@@ -7,6 +7,7 @@
 - [x] List of Items
 - [x] Item Component
 - [x] Add Item Button / Action
-- [ ] Edit Item & Store to Database
-- [ ] Delete Item & Store to Database
+- [x] Edit Item & Store to Database
+- [x] Delete Item & Store to Database
 - [ ] Visualizations
+- [x] Add ability to hit enter to submit updating an item
