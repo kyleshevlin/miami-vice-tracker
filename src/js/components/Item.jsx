@@ -43,11 +43,12 @@ class Item extends Component {
   }
 
   handleDelete = () => {
-    const { item: { id }, deleteItem } = this.props
+    const { item: { id, userId }, deleteItem } = this.props
 
     if (confirmDelete()) {
       deleteItem(id)
       database.ref(`items/${id}`).remove()
+      database.ref(`users/${userId}/items/${id}`).remove()
     }
   }
 
@@ -136,7 +137,8 @@ Item.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     size: PropTypes.string,
-    count: PropTypes.number
+    count: PropTypes.number,
+    userId: PropTypes.string
   }).isRequired,
   deleteItem: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired
