@@ -11,20 +11,13 @@ class ItemsContainer extends Component {
   componentDidMount() {
     const { currentUser, updateItems } = this.props
 
-    database.ref('items').on('value', snapshot => {
-      const items = objectToArray(snapshot.val())
+    database
+      .ref(`users/${currentUser.uid}/items`)
+      .on('value', snapshot => {
+        const items = objectToArray(snapshot.val())
 
-      // TODO: There's probably a better way to store the data as this is a
-      // 0(n) filtering. This isn't a problem while the amount of items is small
-      // but would require filtering _all_ items at the moment. Would be better to only
-      // take the item keys from the user.items prop and only get those ones, but the
-      // queries don't make much sense to me right now.
-      const filteredItems = items.filter(
-        item => item.userId === currentUser.uid
-      )
-
-      updateItems(filteredItems)
-    })
+        updateItems(items)
+      })
   }
 
   render() {

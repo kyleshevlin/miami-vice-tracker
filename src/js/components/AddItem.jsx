@@ -30,15 +30,13 @@ class AddItem extends Component {
         count: 0,
         id: key,
         name,
-        size,
-        userId: uid
+        size
       }
 
       this.props.addItem(item)
 
       const update = {
-        [`items/${key}`]: item,
-        [`users/${uid}/items/${key}`]: true
+        [`users/${uid}/items/${key}`]: item
       }
 
       database.ref().update(update)

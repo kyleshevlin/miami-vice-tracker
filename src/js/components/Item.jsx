@@ -14,12 +14,18 @@ class Item extends Component {
   constructor(props) {
     super(props)
 
+    const { currentUser, item } = props
+
     this.state = {
       isEditng: false,
-      localCost: strToFloat(props.item.cost),
-      localName: props.item.name,
-      localSize: props.item.size
+      localCost: strToFloat(item.cost),
+      localName: item.name,
+      localSize: item.size
     }
+
+    this.itemRef = database.ref(
+      `users/${currentUser.uid}/items/${item.id}`
+    )
   }
 
   componentDidMount() {
@@ -48,14 +54,14 @@ class Item extends Component {
     const { item: { id, count }, editItem } = this.props
 
     editItem(id, { count: count + 1 })
-    database.ref(`items/${id}`).update({ count: count + 1 })
+    this.itemRef.update({ count: count + 1 })
   }
 
   handleDecrement = () => {
     const { item: { id, count }, editItem } = this.props
 
     editItem(id, { count: count - 1 })
-    database.ref(`items/${id}`).update({ count: count - 1 })
+    this.itemRef.update({ count: count - 1 })
   }
 
   handleChange = ({ target }) => {
@@ -67,12 +73,11 @@ class Item extends Component {
   }
 
   handleDelete = () => {
-    const { item: { id, userId }, deleteItem } = this.props
+    const { item: { id }, deleteItem } = this.props
 
     if (confirmDelete()) {
       deleteItem(id)
-      database.ref(`items/${id}`).remove()
-      database.ref(`users/${userId}/items/${id}`).remove()
+      this.itemRef.remove()
     }
   }
 
@@ -97,7 +102,7 @@ class Item extends Component {
     }
 
     editItem(id, update)
-    database.ref(`items/${id}`).update(update)
+    this.itemRef.update(update)
     this.setState({ isEditing: false })
   }
 
@@ -224,6 +229,11 @@ class Item extends Component {
 }
 
 Item.propTypes = {
+  currentUser: PropTypes.shape({
+    uid: PropTypes.string
+  }).isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  editItem: PropTypes.func.isRequired,
   item: PropTypes.shape({
     cost: PropTypes.number,
     count: PropTypes.number,
@@ -231,14 +241,16 @@ Item.propTypes = {
     name: PropTypes.string,
     size: PropTypes.string,
     userId: PropTypes.string
-  }).isRequired,
-  deleteItem: PropTypes.func.isRequired,
-  editItem: PropTypes.func.isRequired
+  }).isRequired
 }
+
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
+})
 
 const mapDispatchToProps = {
   deleteItem,
   editItem
 }
 
-export default connect(null, mapDispatchToProps)(Item)
+export default connect(mapStateToProps, mapDispatchToProps)(Item)
