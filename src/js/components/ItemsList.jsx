@@ -7,12 +7,12 @@ const ItemsList = ({ items }) => (
     {items.length ? (
       <Fragment>
         <div className="items_list-header">
-          <span>Name</span>
-          <span>Size</span>
-          <span>Cost</span>
-          <span>Spent</span>
-          <span>Count</span>
-          <span>Actions</span>
+          <span className="items_list-header-heading">Name</span>
+          <span className="items_list-header-heading">Size</span>
+          <span className="items_list-header-heading">Cost</span>
+          <span className="items_list-header-heading">Spent</span>
+          <span className="items_list-header-heading">Count</span>
+          <span className="items_list-header-heading">Actions</span>
         </div>
         <ol className="items_list">
           {items.map(item => <Item key={item.id} item={item} />)}

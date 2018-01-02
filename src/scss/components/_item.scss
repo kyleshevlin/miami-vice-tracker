@@ -10,7 +10,21 @@
   @include bp(alpha) {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: bs();
     align-items: center;
+  }
+
+  .form_item {
+
+    @include bp(alpha) {
+      margin-bottom: 0;
+    }
+
+    &-label {
+      @include bp(alpha) {
+        display: none;
+      }
+    }
   }
 
   &-heading {
@@ -22,6 +36,7 @@
   }
 
   &-name {
+    font-size: 18px;
     font-weight: bold;
   }
 

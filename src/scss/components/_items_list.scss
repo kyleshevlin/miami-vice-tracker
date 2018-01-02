@@ -5,7 +5,18 @@
 .items_list {
 
   &-header {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: none;
+
+    @include bp(alpha) {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-column-gap: bs();
+      padding-bottom: bs(.5);
+      border-bottom: 1px solid $c-light-gray;
+    }
+
+    &-heading {
+      font-weight: bold;
+    }
   }
 }
