@@ -4,7 +4,8 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer-content">
       <p>
-        Built while consuming many vices. Copyright &copy;{new Date().getFullYear()}.
+        Miami Vice Tracker was built while consuming many vices.
+        Copyright &copy;{new Date().getFullYear()}.
       </p>
       <p className="small">
         {`If "Miami Vice" is trademarked in such a way as to be heinously
