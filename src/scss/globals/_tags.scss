@@ -16,9 +16,27 @@ html {
 body {
   background-color: $c-white;
   color: $c-black;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 a {
+  color: $c-max-teal;
   text-decoration: none;
+  transition: color .3s ease;
+
+  &:hover {
+    color: $c-dodger-blue;
+  }
+}
+
+p {
+  line-height: 1.5;
+
+  &.small {
+    font-size: 13px;
+  }
+
+  + p {
+    margin-top: bs();
+  }
 }

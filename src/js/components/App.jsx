@@ -5,6 +5,7 @@ import ErrorBoundary from './ErrorBoundary'
 import AuthListener from './AuthListener'
 import Header from './Header'
 import Main from './Main'
+import Footer from './Footer'
 
 const App = () => (
   <Provider store={store}>
@@ -14,6 +15,7 @@ const App = () => (
 
         <Header />
         <Main />
+        <Footer />
       </ErrorBoundary>
     </div>
   </Provider>

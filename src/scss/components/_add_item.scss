@@ -6,6 +6,10 @@
   margin-bottom: bs(4);
 
   @include bp(alpha) {
+    width: 75%;
+  }
+
+  @include bp(bravo) {
     width: 50%;
   }
 }

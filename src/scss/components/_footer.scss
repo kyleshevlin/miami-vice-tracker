@@ -1,0 +1,23 @@
+//////////////////////////////
+// Footer
+//////////////////////////////
+
+.footer {
+  background-color: $c-black;
+  color: $c-white;
+  text-align: center;
+  padding: bs(2);
+
+  &-content {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include bp(alpha) {
+      width: 75%;
+    }
+
+    @include bp(bravo) {
+      width: 50%;
+    }
+  }
+}
