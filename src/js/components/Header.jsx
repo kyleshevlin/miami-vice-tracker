@@ -15,7 +15,7 @@ const Header = ({ isAuthorized }) => (
 
     <div className="header-secondary">
       <HeaderUser />
-      {isAuthorized ? <SignOut /> : <SignIn />}
+      {isAuthorized ? <SignOut /> : <SignIn small />}
     </div>
   </header>
 )

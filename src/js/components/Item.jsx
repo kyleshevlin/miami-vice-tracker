@@ -177,21 +177,23 @@ class Item extends Component {
         <div className="item-counter">
           <span className="item-heading">Count: </span>
           <span className="item-counter-count">{count}</span>
-          <Button
-            className="btn"
-            onClick={this.handleIncrement}
-            small
-          >
-            +
-          </Button>
-          <Button
-            className="btn"
-            onClick={this.handleDecrement}
-            small
-            disabled={count <= 0}
-          >
-            -
-          </Button>
+          <div className="item-counter-actions">
+            <Button
+              className="btn"
+              onClick={this.handleIncrement}
+              small
+            >
+              +
+            </Button>
+            <Button
+              className="btn"
+              onClick={this.handleDecrement}
+              small
+              disabled={count <= 0}
+            >
+              -
+            </Button>
+          </div>
         </div>
 
         <div className="item-actions">

@@ -1,0 +1,18 @@
+//////////////////////////////
+// Greeting
+//////////////////////////////
+
+.greeting {
+  text-align: center;
+  padding: bs(4);
+
+  &-heading {
+    font-size: 28px;
+    margin-bottom: bs(2);
+  }
+
+  &-content {
+    font-size: 20px;
+    margin-bottom: bs(2);
+  }
+}

@@ -57,5 +57,14 @@
     &-count {
       margin-right: 10px;
     }
+
+    &-actions {
+      display: inline-block;
+      vertical-align: middle;
+
+      .btn {
+        width: 25px;
+      }
+    }
   }
 }
