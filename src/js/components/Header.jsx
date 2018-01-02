@@ -5,9 +5,14 @@ import HeaderUser from './HeaderUser'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
 
+import title from '../../assets/Title.png'
+
 const Header = ({ isAuthorized }) => (
   <header className="header">
-    <h1 className="header-heading">Miami Vice Tracker</h1>
+    <h1 className="header-heading">
+      <img src={title} alt="Miami Vice Tracker" />
+      Miami Vice Tracker
+    </h1>
 
     <div className="header-secondary">
       <HeaderUser />

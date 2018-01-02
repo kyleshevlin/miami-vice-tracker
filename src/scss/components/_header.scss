@@ -8,9 +8,9 @@
   align-items: center;
   background-color: $c-dodger-blue;
   color: $c-white;
-  padding: bs(.5);
+  padding: bs();
 
   &-heading {
-    font-size: 20px;
+    font-size: 0;
   }
 }

@@ -52,6 +52,11 @@ module.exports = env => {
             fallback: 'style-loader',
             use: 'css-loader?sourceMap!postcss-loader?sourceMap'
           })
+        },
+        {
+          test: /\.png$/,
+          loader: 'file-loader',
+          exclude: /node_modules/
         }
       ]
     },
