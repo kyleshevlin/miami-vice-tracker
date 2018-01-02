@@ -4,7 +4,6 @@ import withAuth from '../hocs/withAuth'
 import HeaderUser from './HeaderUser'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
-
 import title from '../../assets/Title.png'
 
 const Header = ({ isAuthorized }) => (

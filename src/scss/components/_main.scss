@@ -4,4 +4,11 @@
 
 .main {
   padding: bs();
+
+  &-upper {
+
+    @include bp(bravo) {
+      display: flex;
+    }
+  }
 }

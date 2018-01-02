@@ -1,0 +1,21 @@
+//////////////////////////////
+// Total Cost
+//////////////////////////////
+
+.total_cost {
+  margin-bottom: bs(4);
+
+  @include bp(bravo) {
+    width: 50%;
+  }
+
+  &-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: bs(.5);
+  }
+
+  &-total {
+    font-size: 40px;
+  }
+}
