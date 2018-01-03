@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Provider } from 'react-redux'
 import store from '../store'
 import ErrorBoundary from './ErrorBoundary'
@@ -9,7 +9,7 @@ import Footer from './Footer'
 
 const App = () => (
   <Provider store={store}>
-    <div>
+    <Fragment>
       <ErrorBoundary message="Something went terribly wrong with the application. Sorry! ¯\_(ツ)_/¯">
         <AuthListener />
 
@@ -17,7 +17,7 @@ const App = () => (
         <Main />
         <Footer />
       </ErrorBoundary>
-    </div>
+    </Fragment>
   </Provider>
 )
 

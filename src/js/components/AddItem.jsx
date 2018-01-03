@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import NumericInput from 'react-numeric-input'
 import { addItem } from '../actions'
 import { database } from '../firebase'
-import { strToFloat } from '../utils'
 
 const initialState = {
-  // prettier-ignore
-  cost: '0.00',
+  cost: 0.0,
   name: '',
   size: ''
 }
@@ -21,12 +20,12 @@ class AddItem extends Component {
     const { currentUser: { uid } } = this.props
     const { cost, name, size } = this.state
 
-    if (cost.length && name.length && size.length) {
+    if (this.inputsAreValid()) {
       // Create a new items ref, get its ID
       const { key } = database.ref('items').push()
 
       const item = {
-        cost: strToFloat(cost),
+        cost,
         count: 0,
         id: key,
         name,
@@ -47,6 +46,16 @@ class AddItem extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ [target.name]: target.value })
+  }
+
+  handleNumericChange = (value, _, input) => {
+    this.setState({ [input.name]: value })
+  }
+
+  inputsAreValid = () => {
+    const { cost, name, size } = this.state
+
+    return cost >= 0 && name.length && size.length
   }
 
   render() {
@@ -87,22 +96,22 @@ class AddItem extends Component {
             <label className="form_item-label" htmlFor="itemCost">
               Cost
             </label>
-            <input
+            <NumericInput
               id="itemCost"
               className="form_item-input"
-              type="number"
-              step="0.01"
-              min={0}
               name="cost"
+              step={0.01}
+              min={0}
+              precision={2}
               value={cost}
-              onChange={this.handleChange}
+              onChange={this.handleNumericChange}
             />
           </div>
 
           <button
             className="btn"
             type="submit"
-            disabled={!(cost.length && name.length && size.length)}
+            disabled={!this.inputsAreValid()}
           >
             Add Item
           </button>
