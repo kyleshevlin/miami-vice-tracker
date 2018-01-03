@@ -6,7 +6,7 @@ import Button from './Button'
 const SignIn = ({ big, small }) => (
   <Button
     onClick={() => {
-      auth.signInWithRedirect(googleAuthProvider)
+      auth.signInWithPopup(googleAuthProvider)
     }}
     big={big}
     small={small}
