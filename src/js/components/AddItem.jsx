@@ -105,6 +105,7 @@ class AddItem extends Component {
               precision={2}
               value={cost}
               onChange={this.handleNumericChange}
+              style={false} // eslint-disable-line react/style-prop-object
             />
           </div>
 

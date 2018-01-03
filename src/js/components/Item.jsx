@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import NumericInput from 'react-numeric-input'
 import { database } from '../firebase'
 import { editItem, deleteItem } from '../actions'
-import { confirmWithUser, strToFloat } from '../utils'
+import { confirmWithUser } from '../utils'
 import Button from './Button'
 
 const confirmDelete = confirmWithUser(
@@ -18,7 +20,7 @@ class Item extends Component {
 
     this.state = {
       isEditng: false,
-      localCost: strToFloat(item.cost),
+      localCost: item.cost,
       localName: item.name,
       localSize: item.size
     }
@@ -68,6 +70,10 @@ class Item extends Component {
     this.setState({ [target.name]: target.value })
   }
 
+  handleNumericChange = (value, _, input) => {
+    this.setState({ [input.name]: value })
+  }
+
   handleEdit = () => {
     this.setState({ isEditing: true })
   }
@@ -82,11 +88,13 @@ class Item extends Component {
   }
 
   handleCancel = () => {
+    const { item: { cost, name, size } } = this.props
+
     this.setState({
       isEditing: false,
-      localCost: strToFloat(this.props.item.cost),
-      localName: this.props.item.name,
-      localSize: this.props.item.size
+      localCost: cost,
+      localName: name,
+      localSize: size
     })
   }
 
@@ -96,7 +104,7 @@ class Item extends Component {
     const { item: { id }, editItem } = this.props
     const { localCost, localName, localSize } = this.state
     const update = {
-      cost: strToFloat(localCost),
+      cost: localCost,
       name: localName,
       size: localSize
     }
@@ -109,9 +117,10 @@ class Item extends Component {
   render() {
     const { cost, count, name, size } = this.props.item
     const { isEditing, localCost, localName, localSize } = this.state
+    const classes = classNames('item', { isEditing: 'is-editing' })
 
     return (
-      <div className={`item ${isEditing && 'is-editing'}`}>
+      <div className={classes}>
         {isEditing ? (
           <Fragment>
             <div className="form_item">
@@ -144,14 +153,15 @@ class Item extends Component {
               <label className="form_item-label" htmlFor="localCost">
                 Cost
               </label>
-              <input
+              <NumericInput
                 className="form_item-input"
-                type="number"
-                step="0.01"
-                min={0}
-                value={localCost}
                 name="localCost"
-                onChange={this.handleChange}
+                step={0.01}
+                min={0}
+                precision={2}
+                value={localCost}
+                onChange={this.handleNumericChange}
+                style={false} // eslint-disable-line react/style-prop-object
               />
             </div>
           </Fragment>
