@@ -10,9 +10,9 @@
   "license": "MIT",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p --env.prod",
-    "deploy": "yarn run build && now",
     "format": "prettier --write --no-semi --single-quote --print-width=80 --parser=flow --tab-width=2 \"src/js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
+    "now-start": "serve --single ./build",
     "start": "webpack-dev-server --env.dev --hot",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -82,6 +82,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "serve": "^6.4.3",
     "shortid": "^2.2.8"
   }
 }
