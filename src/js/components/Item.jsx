@@ -115,7 +115,10 @@ class Item extends Component {
   }
 
   render() {
-    const { cost, count, name, size } = this.props.item
+    const {
+      currencySymbol,
+      item: { cost, count, name, size }
+    } = this.props
     const { isEditing, localCost, localName, localSize } = this.state
     const classes = classNames('item', { isEditing: 'is-editing' })
 
@@ -175,14 +178,16 @@ class Item extends Component {
             {/* TODO: make this currency more internationally friendly */}
             <div className="item-cost">
               <span className="item-heading">Cost: </span>
-              ${cost.toFixed(2)}
+              {currencySymbol}
+              {cost.toFixed(2)}
             </div>
           </Fragment>
         )}
 
         <div className="item-spent">
           <span className="item-heading">Total Spent: </span>
-          ${(Math.round(cost * count * 100) / 100).toFixed(2)}
+          {currencySymbol}
+          {(Math.round(cost * count * 100) / 100).toFixed(2)}
         </div>
         <div className="item-counter">
           <span className="item-heading">Count: </span>
@@ -241,6 +246,7 @@ class Item extends Component {
 }
 
 Item.propTypes = {
+  currencySymbol: PropTypes.string.isRequired,
   currentUser: PropTypes.shape({
     uid: PropTypes.string
   }).isRequired,
@@ -257,6 +263,7 @@ Item.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  currencySymbol: state.currencySymbol,
   currentUser: state.currentUser
 })
 
