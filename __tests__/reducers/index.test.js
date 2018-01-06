@@ -63,4 +63,18 @@ describe('Reducer', () => {
 
     expect(reducer(state, action)).toEqual(expected)
   })
+
+  it('UPDATE_CURRENCY_SYMBOL updates the currency character', () => {
+    const state = {
+      currencySymbol: '$'
+    }
+    const nextSymbol = '£'
+    const action = actions.updateCurrencySymbol(nextSymbol)
+    const expected = {
+      ...state,
+      currencySymbol: nextSymbol
+    }
+
+    expect(reducer(state, action)).toEqual(expected)
+  })
 })

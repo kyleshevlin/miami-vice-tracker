@@ -9,3 +9,6 @@ export const DELETE_ITEM = 'DELETE_ITEM'
 
 // User
 export const UPDATE_CURRENT_USER = 'UPDATE_CURRENT_USER'
+
+// Other
+export const UPDATE_CURRENCY_SYMBOL = 'UPDATE_CURRENCY_SYMBOL'

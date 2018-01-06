@@ -2,7 +2,8 @@ import * as types from '../constants/actionTypes'
 
 export const initialState = {
   items: [],
-  currentUser: null
+  currentUser: null,
+  currencySymbol: '$'
 }
 
 const reducer = (state = initialState, action) => {
@@ -49,6 +50,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentUser: action.user
+      }
+
+    case types.UPDATE_CURRENCY_SYMBOL:
+      return {
+        ...state,
+        currencySymbol: action.symbol
       }
 
     default:

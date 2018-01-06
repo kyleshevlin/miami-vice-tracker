@@ -35,3 +35,10 @@ export function updateCurrentUser(user) {
     user
   }
 }
+
+export function updateCurrencySymbol(symbol) {
+  return {
+    type: types.UPDATE_CURRENCY_SYMBOL,
+    symbol
+  }
+}
