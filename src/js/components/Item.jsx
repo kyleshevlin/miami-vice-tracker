@@ -175,14 +175,14 @@ class Item extends Component {
             {/* TODO: make this currency more internationally friendly */}
             <div className="item-cost">
               <span className="item-heading">Cost: </span>
-              ${cost}
+              ${cost.toFixed(2)}
             </div>
           </Fragment>
         )}
 
         <div className="item-spent">
           <span className="item-heading">Total Spent: </span>
-          ${Math.round(cost * count * 100) / 100}
+          ${(Math.round(cost * count * 100) / 100).toFixed(2)}
         </div>
         <div className="item-counter">
           <span className="item-heading">Count: </span>
