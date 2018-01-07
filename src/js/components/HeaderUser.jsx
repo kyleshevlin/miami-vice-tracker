@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import UserSettings from './UserSettings'
 
 const HeaderUser = ({ user }) =>
   user ? (
@@ -13,6 +14,7 @@ const HeaderUser = ({ user }) =>
           alt={`${user.displayName}'s avatar`}
         />
       </div>
+      <UserSettings />
     </div>
   ) : null
 

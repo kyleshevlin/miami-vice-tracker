@@ -19,7 +19,7 @@ class Item extends Component {
     const { currentUser, item } = props
 
     this.state = {
-      isEditng: false,
+      isEditing: false,
       localCost: item.cost,
       localName: item.name,
       localSize: item.size

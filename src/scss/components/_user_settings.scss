@@ -1,0 +1,33 @@
+//////////////////////////////
+// User Settings
+//////////////////////////////
+
+.user_settings {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  &-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &-arrow {
+      fill: $c-white;
+
+      .is-open & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-dropdown {
+    width: 240px;
+    background-color: $c-dodger-blue;
+    padding: bs();
+    box-shadow: 0 0 2px rgba($c-black, .2);
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+  }
+}
