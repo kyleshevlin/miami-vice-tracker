@@ -1,3 +1,8 @@
+// Groups
+export const ADD_GROUP = 'ADD_GROUP'
+export const EDIT_GROUP = 'EDIT_GROUP'
+export const DELETE_GROUP = 'DELETE_GROUP'
+
 // Items
 export const REQUEST_ITEMS = 'REQUEST_ITEMS'
 export const RECEIVE_ITEMS_SUCCESS = 'RECEIVE_ITEMS_SUCCESS'
