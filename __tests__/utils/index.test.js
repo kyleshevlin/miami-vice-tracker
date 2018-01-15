@@ -1,4 +1,4 @@
-import { objectToArray } from '../../src/js/utils'
+import { daysSinceStartOfYear, objectToArray } from '../../src/js/utils'
 
 describe('Utils', () => {
   describe('objectToArray', () => {
@@ -18,6 +18,20 @@ describe('Utils', () => {
       const expected = ['bar', 'quux']
 
       expect(objectToArray(obj)).toEqual(expected)
+    })
+  })
+
+  describe('daysSinceStartOfYear', () => {
+    it('should return 1 on Jan 1', () => {
+      const result = daysSinceStartOfYear(new Date(2018, 0, 1))
+
+      expect(result).toEqual(1)
+    })
+
+    it('should return 365 on Dec 31', () => {
+      const result = daysSinceStartOfYear(new Date(2018, 11, 31))
+
+      expect(result).toEqual(365)
     })
   })
 })

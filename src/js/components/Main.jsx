@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import withAuth from '../hocs/withAuth'
 import TotalCost from './TotalCost'
+import CostProjection from './CostProjection'
 import AddItem from './AddItem'
 import ItemsContainer from '../containers/ItemsContainer'
 import Greeting from './Greeting'
@@ -12,6 +13,7 @@ const Main = ({ isAuthorized }) => (
       <Fragment>
         <div className="main-upper">
           <TotalCost />
+          <CostProjection />
           <AddItem />
         </div>
         <ItemsContainer />
