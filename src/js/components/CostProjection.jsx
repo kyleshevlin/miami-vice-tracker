@@ -17,9 +17,13 @@ class CostProjection extends Component {
       .reduce((acc, item) => acc + item.cost * item.count, 0)
       .toFixed(2)
     const days = daysSinceStartOfYear(new Date())
-    const projected = 365 * spent / days
+    const projectedSpending = 365 * spent / days
 
-    return height - projected * height / this.state.budget
+    const projectedHeight =
+      height - projectedSpending * height / this.state.budget
+
+    // Protect against a result of -Infinity with an absurdly high negative number
+    return projectedHeight === -Infinity ? -500000 : projectedHeight
   }
 
   handleNumericChange = (value, _, input) => {
@@ -43,7 +47,7 @@ class CostProjection extends Component {
             id="annual_vice_budget"
             className="form_item-input"
             name="budget"
-            min={0}
+            min={1}
             value={this.state.budget}
             onChange={this.handleNumericChange}
             style={false} // eslint-disable-line react/style-prop-object
