@@ -27,6 +27,8 @@ class CostProjection extends Component {
   }
 
   render() {
+    const projectedHeight = this.calculateProjectedHeight()
+
     return (
       <div className="cost_projection">
         <h2>Cost Projection</h2>
@@ -64,9 +66,9 @@ class CostProjection extends Component {
             x1={0}
             y1={height}
             x2={width}
-            y2={this.calculateProjectedHeight()}
+            y2={projectedHeight}
             strokeWidth={2}
-            stroke="#f00"
+            stroke={projectedHeight < 0 ? '#f00' : '#0f0'}
           />
         </svg>
       </div>
