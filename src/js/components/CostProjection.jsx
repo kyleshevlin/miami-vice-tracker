@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import NumericInput from 'react-numeric-input'
-import { daysSinceStartOfYear, objectToArray } from '../utils'
+import { daysSinceStartOfYear } from '../utils'
 
 const width = 400
 const height = 225
@@ -13,11 +13,8 @@ class CostProjection extends Component {
   }
 
   calculateProjectedHeight = () => {
-    const spent = objectToArray(this.props.currentUser.items)
-      .reduce((acc, item) => acc + item.cost * item.count, 0)
-      .toFixed(2)
     const days = daysSinceStartOfYear(new Date())
-    const projectedSpending = 365 * spent / days
+    const projectedSpending = 365 * this.props.totalSpent / days
 
     const projectedHeight =
       height - projectedSpending * height / this.state.budget
@@ -35,25 +32,28 @@ class CostProjection extends Component {
 
     return (
       <div className="cost_projection">
-        <h2>Cost Projection</h2>
-        <div className="form_item">
-          <label
-            htmlFor="annual_vice_budget"
-            className="form_item-label"
-          >
-            Annual Vice Budget
-          </label>
-          <NumericInput
-            id="annual_vice_budget"
-            className="form_item-input"
-            name="budget"
-            min={1}
-            value={this.state.budget}
-            onChange={this.handleNumericChange}
-            style={false} // eslint-disable-line react/style-prop-object
-          />
-        </div>
+        <h2 className="cost_projection-heading">Cost Projection</h2>
+        <form className="cost_projection-form">
+          <div className="form_item">
+            <label
+              htmlFor="annual_vice_budget"
+              className="form_item-label"
+            >
+              Annual Vice Budget
+            </label>
+            <NumericInput
+              id="annual_vice_budget"
+              className="form_item-input"
+              name="budget"
+              min={1}
+              value={this.state.budget}
+              onChange={this.handleNumericChange}
+              style={false} // eslint-disable-line react/style-prop-object
+            />
+          </div>
+        </form>
         <svg
+          className="cost_projection-visual"
           width={width}
           height={height}
           viewBox={`0 0 ${width} ${height}`}
@@ -75,21 +75,24 @@ class CostProjection extends Component {
             stroke={projectedHeight < 0 ? '#f00' : '#0f0'}
           />
         </svg>
+
+        <div className="cost_projection-legend">
+          <p>
+            The black line represents your budget. The colored line
+            represents your projected spending
+          </p>
+        </div>
       </div>
     )
   }
 }
 
 CostProjection.propTypes = {
-  currentUser: PropTypes.shape({
-    items: PropTypes.shape({
-      cost: PropTypes.number
-    })
-  }).isRequired
+  totalSpent: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  totalSpent: state.totalSpent
 })
 
 export default connect(mapStateToProps)(CostProjection)

@@ -1,0 +1,32 @@
+//////////////////////////////
+// Cost Projection
+//////////////////////////////
+
+.cost_projection {
+  margin-bottom: bs(2);
+
+  @include bp(alpha) {
+    width: 75%;
+  }
+
+  @include bp(bravo) {
+    width: 100%;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  &-heading {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: bs();
+  }
+
+  &-visual {
+    margin-top: bs(.5);
+    margin-bottom: bs(.5);
+  }
+
+  &-legend {}
+}

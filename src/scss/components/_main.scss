@@ -10,7 +10,10 @@
   &-upper {
 
     @include bp(bravo) {
-      display: flex;
+      display: grid;
+      grid-template-rows: 0.7fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: bs();
     }
   }
 }

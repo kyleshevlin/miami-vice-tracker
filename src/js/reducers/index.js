@@ -1,9 +1,11 @@
 import * as types from '../constants/actionTypes'
+import { objectToArray } from '../utils'
 
 export const initialState = {
   items: [],
   currentUser: null,
-  currencySymbol: '$'
+  currencySymbol: '$',
+  totalSpent: 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -46,11 +48,18 @@ const reducer = (state = initialState, action) => {
     case types.UPDATE_ITEMS:
       return { ...state, items: action.items }
 
-    case types.UPDATE_CURRENT_USER:
+    case types.UPDATE_CURRENT_USER: {
+      const { user } = action
+      const totalSpent = objectToArray(user.items)
+        .reduce((acc, item) => acc + item.cost * item.count, 0)
+        .toFixed(2)
+
       return {
         ...state,
-        currentUser: action.user
+        currentUser: user,
+        totalSpent
       }
+    }
 
     case types.UPDATE_CURRENCY_SYMBOL:
       return {

@@ -6,7 +6,7 @@
   margin-bottom: bs(4);
 
   @include bp(bravo) {
-    width: 50%;
+    margin-bottom: 0;
   }
 
   &-heading {
